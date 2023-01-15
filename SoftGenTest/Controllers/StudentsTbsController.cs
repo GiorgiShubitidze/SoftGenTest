@@ -14,24 +14,16 @@ namespace SoftGenTest.Controllers
 {
     public class StudentsTbsController : Controller
     {
-        private readonly StudentDbContext _context;
 
         IBrowsingAppService _browsingAppService;
-        public StudentsTbsController(IBrowsingAppService browsingAppService, StudentDbContext context)
+        public StudentsTbsController(IBrowsingAppService browsingAppService)
         {
             _browsingAppService = browsingAppService;
-            _context = context;
         }
 
-        public IActionResult Index(string name, string surname, DateTime? birthdayDate, int pin = 0)
+        public IActionResult Index(string name, string surname, DateTime? birthdayDate, string pin)
         {
-
-           var  filterStudents = _context.StudentsTbs.Where(i => (i.Name.Contains(name) && name != null) ||
-                                                       (i.Surname.Contains(surname) && surname != null) ||
-                                                       (birthdayDate != null && (i.BirthdayDate!=null && i.BirthdayDate.Value.Date==birthdayDate.Value.Date))
-                                                       ).ToList();
-
-            return View(filterStudents);
+            return View(_browsingAppService.GetFilterStudents(name, surname, birthdayDate, pin));
         }
 
 

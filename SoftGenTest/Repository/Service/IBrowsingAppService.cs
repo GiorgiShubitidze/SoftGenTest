@@ -27,13 +27,18 @@ namespace SoftgenTest1.Repository.Service
         public StudentsTb EditStudentCheck(int? id);
         public bool EditStudent(StudentsTb student);
         public bool DeleteStudent(int? id);
+        public List<StudentsTb> GetFilterStudents(string name, string surname, DateTime? birthdayDate, string pin);
         #endregion
+
         #region Teacher
         public void CreateTeacher(TeachersTb teachers);
         public bool DeleteTeacher(int? id);
         public TeachersTb EditTeacherCheck(int? id);
         public bool EditTeacher(TeachersTb teacher);
+        public List<TeachersTb> GetFilterTeachers(string name, string surname, DateTime? birthdayDate, string pin);
         #endregion
+
+        
 
 
 

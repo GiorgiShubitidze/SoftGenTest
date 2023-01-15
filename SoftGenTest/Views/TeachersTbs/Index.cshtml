@@ -4,10 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Teachers</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
+    <form method="get" for class="form-inline my-2 my-lg-3" asp-action="Index" asp-controller="StudentsTbs" asp-route-productName="Search">
+        <input class="form-control mr-sm-2" name="name" type="text" placeholder="name" aria-label="Search">
+        <input class="form-control mr-sm-2" name="surname" type="text" placeholder="surname" aria-label="Search">
+        <input class="form-control mr-sm-2" name="pin" type="text" placeholder="pin" aria-label="Search">
+        <input class="form-control mr-sm-2" name="birthdayDate" type="date" placeholder="BirthdayDate" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
 </p>
 <table class="table">
     <thead>

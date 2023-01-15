@@ -1,4 +1,4 @@
-﻿@model SoftGenTest.Repository.Models.StudentTbGroupTb
+﻿@model SoftGenTest.Repository.Models.GroupsTb
 
 @{
     ViewData["Title"] = "Create";
@@ -6,19 +6,21 @@
 
 <h1>Create</h1>
 
-<h4>StudentTbGroupTb</h4>
+<h4>GroupsTb</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="StudentId" class="control-label"></label>
-                <select asp-for="StudentId" class="form-control" asp-items="ViewBag.StudentId"></select>
+                <label asp-for="GroupName" class="control-label"></label>
+                <input asp-for="GroupName" class="form-control" />
+                <span asp-validation-for="GroupName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GroupId" class="control-label"></label>
-                <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupId"></select>
+                <label asp-for="GroupNumber" class="control-label"></label>
+                <input asp-for="GroupNumber" class="form-control" />
+                <span asp-validation-for="GroupNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

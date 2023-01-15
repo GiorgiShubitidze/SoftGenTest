@@ -13,17 +13,15 @@ namespace SoftGenTest.Controllers
 {
     public class TeachersTbsController : Controller
     {
-        private readonly StudentDbContext _context;
         IBrowsingAppService _browsingAppService;
-        public TeachersTbsController(IBrowsingAppService browsingAppService, StudentDbContext context)
+        public TeachersTbsController(IBrowsingAppService browsingAppService)
         {
             _browsingAppService = browsingAppService;
-            _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(string name, string surname, DateTime? birthdayDate, string pin)
         {
-            return View(await _context.TeachersTbs.ToListAsync());
+            return View(_browsingAppService.GetFilterTeachers(name, surname, birthdayDate, pin));
         }
 
 

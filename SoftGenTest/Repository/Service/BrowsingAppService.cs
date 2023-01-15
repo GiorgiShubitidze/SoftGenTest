@@ -269,7 +269,7 @@ namespace SoftgenTest1.Repository.Servie
                     studentDbContext.StudentsTbs.Remove(studentsTb);
                 }
 
-                studentDbContext.SaveChangesAsync();
+                studentDbContext.SaveChanges();
                 return true;
 
             }
@@ -323,6 +323,36 @@ namespace SoftgenTest1.Repository.Servie
             {
                 return false;
             }
+        }
+
+        public List<StudentsTb> GetFilterStudents(string name, string surname, DateTime? birthdayDate, string pin)
+        {
+            List<StudentsTb> filterStudents = null;
+            if (name == null && surname == null && birthdayDate == null&&pin==null)
+            {
+               return filterStudents = studentDbContext.StudentsTbs.ToList();
+            }
+
+            return filterStudents = studentDbContext.StudentsTbs.Where(i => (i.Name.Contains(name) && name != null) ||
+                                                       (i.Surname.Contains(surname) && surname != null) ||
+                                                       (i.Pin.Contains(pin)&&pin!=null)||
+                                                       (birthdayDate != null && (i.BirthdayDate != null && i.BirthdayDate.Value.Date == birthdayDate.Value.Date))
+                                                       ).ToList();
+        }
+
+        public List<TeachersTb> GetFilterTeachers(string name, string surname, DateTime? birthdayDate, string pin)
+        {
+            List<TeachersTb> filterStudents = null;
+            if (name == null && surname == null && birthdayDate == null && pin == null)
+            {
+                return filterStudents = studentDbContext.TeachersTbs.ToList();
+            }
+
+            return filterStudents = studentDbContext.TeachersTbs.Where(i => (i.Name.Contains(name) && name != null) ||
+                                                       (i.Surname.Contains(surname) && surname != null) ||
+                                                       (i.Pin.Contains(pin) && pin != null) ||
+                                                       (birthdayDate != null && (i.BirthdayDate != null && i.BirthdayDate.Value.Date == birthdayDate.Value.Date))
+                                                       ).ToList();
         }
     }
 }

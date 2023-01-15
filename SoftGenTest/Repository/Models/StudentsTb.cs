@@ -11,7 +11,7 @@ public partial class StudentsTb
 
     public string? Surname { get; set; }
 
-    public long? Pin { get; set; }
+    public string? Pin { get; set; }
 
     public DateTime? BirthdayDate { get; set; }
 
